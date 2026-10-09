@@ -69,7 +69,7 @@ public:
 			tail = newNode; // Inserting at the end
 		temp->next = newNode;
 	}
-	void delete_node(int value) {
+	void delete_val(int value) {
 		if (!head) return; // Empty list
 		Node* temp = head;
 		while (temp && temp->data != value)
@@ -123,6 +123,21 @@ public:
         }
         else {
             tail = nullptr;
+        }
+        delete temp;
+    }
+    //pop back node
+    void pop_back() {
+        if (!tail) return;
+
+        Node* temp = tail;
+        tail = temp->prev;
+
+        if (tail) {
+            tail->next = nullptr;
+        }
+        else {
+            head = nullptr;
         }
         delete temp;
     }
