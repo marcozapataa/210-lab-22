@@ -1,8 +1,6 @@
 #include <iostream>
 using namespace std;
 
-const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
-
 class DoublyLinkedList {
 private:
 	struct Node {
@@ -238,6 +236,51 @@ int main() {
     list.pop_back();
 
     cout << "List after pop_back (empty list): ";
+    list.print();
+
+    list.delete_pos(5);
+
+    cout << "List after delete_pos(5) on empty list: ";
+    list.print();
+
+    list.push_back(10);
+    list.push_back(20);
+    list.push_back(30);
+
+    list.delete_pos(10);
+
+    cout << "List after invalid delete_pos(10): ";
+    list.print();
+
+    list.delete_pos(2);
+
+    cout << "List after delete_pos(2): ";
+    list.print();
+
+    list.delete_pos(-1);
+
+    cout << "List after delete_pos(-1): ";
+    list.print();
+
+    cout << "List in reverse: ";
+    list.print_reverse();
+
+    list.push_back(30);
+
+    cout << "List before deleting middle value: ";
+    list.print();
+
+    list.delete_val(20);
+
+    cout << "List after deleting middle value: ";
+    list.print();
+
+    cout << "List in reverse: ";
+    list.print_reverse();
+
+    list.delete_val(50);
+
+    cout << "List after delete_val(50): ";
     list.print();
 		
 	
