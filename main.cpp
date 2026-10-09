@@ -90,7 +90,7 @@ public:
     // delete node based on position
     void delete_pos(int position) {
         if (!head) return;
-        if (postion < 0) return;
+        if (position < 0) return;
 
         Node* temp = head;
 
@@ -143,7 +143,10 @@ public:
     }
 	void print() {
 		Node* current = head;
-		if (!current) return;
+		if (!current) {
+            cout << "List is empty" << endl;
+            return;
+        }
 		while (current) {
 			cout << current->data << " ";
 			current = current->next;
@@ -152,7 +155,10 @@ public:
 	}
 	void print_reverse() {
 		Node* current = tail;
-		if (!current) return;
+		if (!current) {
+            cout << "List is empty" << endl;
+            return;
+        }
 		while (current) {
 			cout << current->data << " ";
 			current = current->prev;
@@ -168,22 +174,72 @@ public:
 	}
 };
 
-// Driver program
+// Driver program to test the required deletion methods
 int main() {
 	DoublyLinkedList list;
-	
-	int size = rand() % (MAX_LS-MIN_LS+1) + MIN_LS;
-	for (int i = 0; i < size; ++i)
-		list.push_back(rand() % (MAX_NR-MIN_NR+1) + MIN_NR);
+
+    // Use predetermined list to better demonstrate methods
+    list.push_back(10);
+    list.push_back(20);
+    list.push_back(30);
+    list.push_back(40);
+    list.push_back(50);
+
+    cout << "Original List: ";
+    list.print();
+
+    list.delete_pos(2);
+
+    cout << "List after deleting pos 2: ";
+    list.print();
+
+    list.delete_pos(0);
+
+    cout << "List after deleting head: ";
+    list.print();
+
+    list.delete_pos(2);
+
+    cout << "List after deleting tail: ";
+    list.print();
+
+    list.pop_front();
+
+    cout << "List after pop_front: ";
+    list.print();
+
+    list.pop_back();
+
+    cout << "List after pop_back: ";
+    list.print();
+
+    list.push_back(60);
+    list.push_back(70);
+    list.push_back(80);
+
+    cout << "List before delete_val: ";
+    list.print();
+
+    list.delete_val(60);
+
+    cout << "List after delete_val(60): ";
+    list.print();
+
+    list.delete_val(80);
+
+    cout << "List after delete_val(80): ";
+    list.print();
+
+    list.pop_front();
+
+    cout << "List after pop_front (single node): ";
+    list.print();
+
+    list.pop_back();
+
+    cout << "List after pop_back (empty list): ";
+    list.print();
 		
-	cout << "List forward: ";
-	list.print();
-	cout << "List backward: ";
-	list.print_reverse();
-	cout << "Deleting list, then trying to print.\n";
-	list.~DoublyLinkedList();
-	cout << "List forward: ";
-	list.print();
 	
 	return 0;
 }
